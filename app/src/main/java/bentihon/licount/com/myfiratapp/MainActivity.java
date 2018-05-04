@@ -1,77 +1,127 @@
 package bentihon.licount.com.myfiratapp;
 
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+import android.util.Log;
+
+
+import java.util.regex.Pattern;
+
+
 
 public class MainActivity extends AppCompatActivity {
+    private TextView calcScreen;
+    private String Display = "";
+    private String currentOperator = "";
+    private String result = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button AddBtn = (Button) findViewById(R.id.AddBtn);
-        AddBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText firstNum = (EditText) findViewById(R.id.FirstNumberEditText);
-                EditText secondNum = (EditText) findViewById(R.id.SecondNumberEditText);
-                TextView result = (TextView) findViewById(R.id.ResultTextView);
+        calcScreen = findViewById(R.id.TextView);
+        calcScreen.setText(Display);
 
-                int num1 = Integer.parseInt(firstNum.getText().toString());
-                int num2 = Integer.parseInt(secondNum.getText().toString());
-                int res = num1+num2;
-                result.setText(res+"");
-            }
-        });
-
-        Button MinusBtn = (Button) findViewById(R.id.MinusBtn);
-        MinusBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            EditText firstNum = (EditText) findViewById(R.id.FirstNumberEditText);
-            EditText secondNum = (EditText) findViewById(R.id.SecondNumberEditText);
-            TextView Result = (TextView) findViewById((R.id.ResultTextView));
-
-            int num1 = Integer.parseInt(firstNum.getText().toString());
-            int num2 = Integer.parseInt(secondNum.getText().toString());
-            int res = num1 - num2;
-            Result.setText(res + "");
-
-            }
-        });
-        Button MultBtn = (Button) findViewById(R.id.MultiplyBtn);
-        MultBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText firstNum = (EditText) findViewById(R.id.FirstNumberEditText);
-                EditText secondNum = (EditText) findViewById(R.id.SecondNumberEditText);
-                TextView Result = (TextView) findViewById((R.id.ResultTextView));
-
-                int num1 = Integer.parseInt(firstNum.getText().toString());
-                int num2 = Integer.parseInt(secondNum.getText().toString());
-                int res = num1 * num2;
-                Result.setText(res + "");
-                }
-            });
-        Button DivideBtn = (Button) findViewById(R.id.DivideBtn);
-        DivideBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText firstNum = (EditText) findViewById(R.id.FirstNumberEditText);
-                EditText secondNum = (EditText) findViewById(R.id.SecondNumberEditText);
-                TextView Result = (TextView) findViewById((R.id.ResultTextView));
-
-                int num1 = Integer.parseInt(firstNum.getText().toString());
-                int num2 = Integer.parseInt(secondNum.getText().toString());
-                int res = num1 / num2;
-                Result.setText(res + "");
-            }
-        });
     }
+
+    private void updateScreen(){
+        calcScreen.setText(Display);
+    }
+
+
+    public void onDigitClicked(View v){
+        if(result != ""){
+            clear();
+            updateScreen();
+        }
+        Button b = (Button) v;
+        Display += b.getText();
+        updateScreen();
+    }
+
+    private boolean isOperator(char op){
+        switch (op){
+            case '+':
+            case '-':
+            case 'x':
+            case '÷':return true;
+            default: return false;
+        }
+    }
+
+
+    public void onClickOperator(View v){
+        if(Display == "") return;
+
+        Button b = (Button)v;
+
+        if(result != ""){
+            String _display = result;
+            clear();
+            Display = _display;
+        }
+
+        if(currentOperator != ""){
+            Log.d("CalcX", ""+Display.charAt(Display.length()-1));
+            if(isOperator(Display.charAt(Display.length()-1))){
+                Display = Display.replace(Display.charAt(Display.length()-1), b.getText().charAt(0));
+                updateScreen();
+                return;
+            }else{
+                getResult();
+                Display = result;
+                result = "";
+            }
+            currentOperator = b.getText().toString();
+        }
+        Display += b.getText();
+        currentOperator = b.getText().toString();
+        updateScreen();
+    }
+
+    private void clear(){
+        Display = "";
+        currentOperator = "";
+        result = "";
+    }
+
+    public void onClickClear(View v){
+        clear();
+        updateScreen();
+    }
+
+    private double operate(String a, String b, String op){
+        switch (op){
+            case "+": return Double.valueOf(a) + Double.valueOf(b);
+            case "-": return Double.valueOf(a) - Double.valueOf(b);
+            case "x": return Double.valueOf(a) * Double.valueOf(b);
+            case "÷":
+                if(Double.valueOf(b)==0) {
+                    calcScreen.setText("math error");
+                    updateScreen();
+                }
+                else return Double.valueOf(a) / Double.valueOf(b);
+            default: return -1;
+        }
+    }
+
+    private boolean getResult(){
+        if(currentOperator == "") return false;
+        String[] operation = Display.split(Pattern.quote(currentOperator));
+        if(operation.length < 2) return false;
+        result = String.valueOf(operate(operation[0], operation[1], currentOperator));
+        return true;
+    }
+
+    public void onClickEqual(View v){
+        if(Display == "") return;
+        if(!getResult()) return;
+        calcScreen.setText(Display + "\n" + String.valueOf(result));
+    }
+
+
 }
