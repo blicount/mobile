@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class CalcActivity extends AppCompatActivity {
     private TextView calcScreen;
     private String Display = "";
     private String currentOperator = "";
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_calc);
 
         calcScreen = findViewById(R.id.TextView);
         calcScreen.setText(Display);
@@ -100,11 +100,11 @@ public class MainActivity extends AppCompatActivity {
             case "-": return Double.valueOf(a) - Double.valueOf(b);
             case "x": return Double.valueOf(a) * Double.valueOf(b);
             case "÷":
-                if(Double.valueOf(b)==0) {
-                    calcScreen.setText("math error");
-                    updateScreen();
+                try{
+                    return Double.valueOf(a) / Double.valueOf(b);
+                }catch (Exception e){
+                    Log.d("Calc", e.getMessage());
                 }
-                else return Double.valueOf(a) / Double.valueOf(b);
             default: return -1;
         }
     }
