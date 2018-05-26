@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import bentihon.licount.com.myfiratapp.recyclerView.BirthDayActivity;
-import bentihon.licount.com.myfiratapp.recyclerView.BirthDayList;
 
 
 public class MainManuActivity extends AppCompatActivity {
@@ -24,8 +22,13 @@ public class MainManuActivity extends AppCompatActivity {
     }
 
 
-    public void launch_birth(View view) {
+  /*  public void launch_birth(View view) {
         Intent intent = new Intent(this, BirthDayList.class);
+        startActivity(intent);
+    }*/
+
+    public void launch_animateLayout(View view) {
+        Intent intent = new Intent(this, animateLayout.class);
         startActivity(intent);
     }
 }

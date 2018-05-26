@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="bentihon.licount.com.myfiratapp">
 
     <application
@@ -18,7 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".recyclerView.BirthDayActivity" />
+        <activity android:name=".recyclerView.BirthDayList"
+            tools:ignore="DuplicateActivity" />
         <activity android:name=".recyclerView.AddBirthDay" />
+        <activity android:name=".animateLayout"></activity>
     </application>
 
 </manifest>
