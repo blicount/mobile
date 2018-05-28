@@ -2,16 +2,10 @@ package bentihon.licount.com.myfiratapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.transition.ChangeBounds;
-import android.transition.Scene;
-import android.transition.Transition;
-import android.transition.TransitionManager;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class animateLayout extends AppCompatActivity {
@@ -24,27 +18,27 @@ public class animateLayout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animate_layout);
 
-        final LinearLayout linearLayout1 = new LinearLayout(animateLayout.this);
-        layout(linearLayout1);
+        final RelativeLayout relativeLayout1 = new RelativeLayout(animateLayout.this);
+        layout(relativeLayout1);
 
-        linearLayout1.setOnClickListener(new View.OnClickListener() {
+        relativeLayout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (mLayoutState == 1) {
-                    linearLayout1.removeAllViews();
-                    layout2(linearLayout1);
+                    relativeLayout1.removeAllViews();
+                    layout2(relativeLayout1);
                     mLayoutState = 2;
                 }
                 else if(mLayoutState == 2) {
-                    linearLayout1.removeAllViews();
-                    layout3(linearLayout1);
+                    relativeLayout1.removeAllViews();
+                    layout3(relativeLayout1);
                     mLayoutState = 3;
 
                 }
                      else {
-                    linearLayout1.removeAllViews();
-                    layout(linearLayout1);
+                    relativeLayout1.removeAllViews();
+                    layout(relativeLayout1);
                     mLayoutState = 1;
                 }
             }
@@ -52,163 +46,193 @@ public class animateLayout extends AppCompatActivity {
         });
     }
 
-    public void layout(LinearLayout linearLayout1){
+    public void layout(RelativeLayout RelativeLayout1){
         TextView PinkTextView = new TextView(this);
         PinkTextView.setText("Pink");
-        //to do position PinkTextView.setLayoutParams(ma);
         PinkTextView.setTextSize(22);
         PinkTextView.setBackgroundResource(R.color.Pink);
-        // LinearLayout.LayoutParams p = (LinearLayout.LayoutParams)linearLayout1.getLayoutParams();
-        //p.setMargins(10,10,20,30);
-        linearLayout1.addView(PinkTextView );
+        PinkTextView.setY(350);
+        PinkTextView.setX(225);
+        RelativeLayout1.addView(PinkTextView );
 
         TextView BlueTextView = new TextView(this);
         BlueTextView.setText("Blue");
         BlueTextView.setTextSize(22);
         BlueTextView.setBackgroundResource(R.color.Blue);
-        //     LinearLayout.LayoutParams b = (LinearLayout.LayoutParams)linearLayout.getLayoutParams();
-        //     b.setMargins(50,50,40,70);
-        linearLayout1.addView(BlueTextView);
+        BlueTextView.setY(350);
+        BlueTextView.setX(225);
+        RelativeLayout1.addView(BlueTextView);
 
-        TextView BlackTextView = new TextView(this);
-        BlackTextView.setText("Black");
-        BlackTextView.setTextSize(22);
-        BlackTextView.setBackgroundResource(R.color.Black);
-        linearLayout1.addView(BlackTextView);
+        TextView OrengeTextView = new TextView(this);
+        OrengeTextView.setText("Orenge");
+        OrengeTextView.setTextSize(22);
+        OrengeTextView.setBackgroundResource(R.color.Orenge);
+        OrengeTextView.setY(350);
+        OrengeTextView.setX(225);
+        RelativeLayout1.addView(OrengeTextView);
 
         TextView BrwonTextView = new TextView(this);
         BrwonTextView.setText("Brwon");
         BrwonTextView.setTextSize(22);
         BrwonTextView.setBackgroundResource(R.color.Brown);
-        linearLayout1.addView(BrwonTextView);
-
-        TextView RedTextView = new TextView(this);
-        RedTextView.setText("Red");
-        RedTextView.setTextSize(22);
-        RedTextView.setBackgroundResource(R.color.Red);
-        linearLayout1.addView(RedTextView);
+        BrwonTextView.setY(350);
+        BrwonTextView.setX(225);
+        RelativeLayout1.addView(BrwonTextView);
 
         TextView YellowTextView = new TextView(this);
         YellowTextView.setText("Yellow");
         YellowTextView.setTextSize(22);
         YellowTextView.setBackgroundResource(R.color.Yellow);
-        linearLayout1.addView(YellowTextView);
+        YellowTextView.setY(350);
+        YellowTextView.setX(225);
+        RelativeLayout1.addView(YellowTextView);
 
         TextView GreenTextView = new TextView(this);
         GreenTextView.setText("Green");
         GreenTextView.setTextSize(22);
         GreenTextView.setBackgroundResource(R.color.Green);
-        linearLayout1.addView(GreenTextView);
+        GreenTextView.setY(350);
+        GreenTextView.setX(225);
+        RelativeLayout1.addView(GreenTextView);
 
-        this.setContentView(linearLayout1, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+        TextView RedTextView = new TextView(this);
+        RedTextView.setText("Red");
+        RedTextView.setTextSize(22);
+        RedTextView.setBackgroundResource(R.color.Red);
+        RedTextView.setY(350);
+        RedTextView.setX(225);
+        RelativeLayout1.addView(RedTextView);
+
+        this.setContentView(RelativeLayout1, new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
     }
 
-    public void layout2(LinearLayout la){
+    public void layout2(RelativeLayout la){
 
 
-
-        TextView BlueTextView = new TextView(this);
-        BlueTextView.setText("Blue");
-        BlueTextView.setTextSize(22);
-        BlueTextView.setBackgroundResource(R.color.Blue);
-        //     LinearLayout.LayoutParams b = (LinearLayout.LayoutParams)linearLayout.getLayoutParams();
-        //     b.setMargins(50,50,40,70);
-        la.addView(BlueTextView);
 
         TextView PinkTextView = new TextView(this);
         PinkTextView.setText("Pink");
         PinkTextView.setTextSize(22);
         PinkTextView.setBackgroundResource(R.color.Pink);
+        PinkTextView.setY(260);
+        PinkTextView.setX(225);
         la.addView(PinkTextView );
 
-        TextView BlackTextView = new TextView(this);
-        BlackTextView.setText("Black");
-        BlackTextView.setTextSize(22);
-        BlackTextView.setBackgroundResource(R.color.Black);
-        BlackTextView.setTextColor(34);
-        la.addView(BlackTextView);
+        TextView BlueTextView = new TextView(this);
+        BlueTextView.setText("Blue");
+        BlueTextView.setTextSize(22);
+        BlueTextView.setBackgroundResource(R.color.Blue);
+        BlueTextView.setY(290);
+        BlueTextView.setX(225);
+        la.addView(BlueTextView);
 
-        TextView GreenTextView = new TextView(this);
-        GreenTextView.setText("Green");
-        GreenTextView.setTextSize(22);
-        GreenTextView.setBackgroundResource(R.color.Green);
-        GreenTextView.setGravity(Gravity.BOTTOM);
-        la.addView(GreenTextView);
+        TextView OrengeTextView = new TextView(this);
+        OrengeTextView.setText("Orenge");
+        OrengeTextView.setTextSize(22);
+        OrengeTextView.setBackgroundResource(R.color.Orenge);
+        OrengeTextView.setY(320);
+        OrengeTextView.setX(225);
+        la.addView(OrengeTextView);
 
         TextView BrwonTextView = new TextView(this);
         BrwonTextView.setText("Brwon");
         BrwonTextView.setTextSize(22);
         BrwonTextView.setBackgroundResource(R.color.Brown);
+        BrwonTextView.setY(350);
+        BrwonTextView.setX(225);
         la.addView(BrwonTextView);
 
-        TextView RedTextView = new TextView(this);
-        RedTextView.setText("Red");
-        RedTextView.setTextSize(22);
-        RedTextView.setBackgroundResource(R.color.Red);
-        la.addView(RedTextView);
 
         TextView YellowTextView = new TextView(this);
         YellowTextView.setText("Yellow");
         YellowTextView.setTextSize(22);
         YellowTextView.setBackgroundResource(R.color.Yellow);
-        la.addView(YellowTextView);
-
-
-        this.setContentView(la, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-
-    }
-
-    private void layout3(LinearLayout la) {
-
-        TextView YellowTextView = new TextView(this);
-        YellowTextView.setText("Yellow");
-        YellowTextView.setTextSize(22);
-        YellowTextView.setBackgroundResource(R.color.Yellow);
+        YellowTextView.setY(380);
+        YellowTextView.setX(225);
         la.addView(YellowTextView);
 
         TextView GreenTextView = new TextView(this);
         GreenTextView.setText("Green");
         GreenTextView.setTextSize(22);
         GreenTextView.setBackgroundResource(R.color.Green);
-        GreenTextView.setGravity(Gravity.BOTTOM);
+        GreenTextView.setY(410);
+        GreenTextView.setX(225);
+        int greenwhidth = GreenTextView.getWidth();
         la.addView(GreenTextView);
-
-        TextView BlueTextView = new TextView(this);
-        BlueTextView.setText("Blue");
-        BlueTextView.setTextSize(22);
-        BlueTextView.setBackgroundResource(R.color.Blue);
-        //     LinearLayout.LayoutParams b = (LinearLayout.LayoutParams)linearLayout.getLayoutParams();
-        //     b.setMargins(50,50,40,70);
-        la.addView(BlueTextView);
-
 
         TextView RedTextView = new TextView(this);
         RedTextView.setText("Red");
         RedTextView.setTextSize(22);
         RedTextView.setBackgroundResource(R.color.Red);
+        RedTextView.setY(440);
+        RedTextView.setX(225);
         la.addView(RedTextView);
+
+        this.setContentView(la, new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+
+    }
+
+    private void layout3(RelativeLayout la) {
 
         TextView PinkTextView = new TextView(this);
         PinkTextView.setText("Pink");
         PinkTextView.setTextSize(22);
         PinkTextView.setBackgroundResource(R.color.Pink);
+        PinkTextView.setY(260);
+        PinkTextView.setX(215);
         la.addView(PinkTextView );
 
-        TextView BlackTextView = new TextView(this);
-        BlackTextView.setText("Black");
-        BlackTextView.setTextSize(22);
-        BlackTextView.setBackgroundResource(R.color.Black);
-        la.addView(BlackTextView);
+        TextView BlueTextView = new TextView(this);
+        BlueTextView.setText("Blue");
+        BlueTextView.setTextSize(22);
+        BlueTextView.setBackgroundResource(R.color.Blue);
+        BlueTextView.setY(290);
+        BlueTextView.setX(260);
+        la.addView(BlueTextView);
+
+        TextView OrengeTextView = new TextView(this);
+        OrengeTextView.setText("Orenge");
+        OrengeTextView.setTextSize(22);
+        OrengeTextView.setBackgroundResource(R.color.Orenge);
+        OrengeTextView.setY(320);
+        OrengeTextView.setX(300);
+        la.addView(OrengeTextView);
 
         TextView BrwonTextView = new TextView(this);
         BrwonTextView.setText("Brwon");
         BrwonTextView.setTextSize(22);
         BrwonTextView.setBackgroundResource(R.color.Brown);
+        BrwonTextView.setY(350);
+        BrwonTextView.setX(370);
         la.addView(BrwonTextView);
 
-        this.setContentView(la, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+        TextView YellowTextView = new TextView(this);
+        YellowTextView.setText("Yellow");
+        YellowTextView.setTextSize(22);
+        YellowTextView.setBackgroundResource(R.color.Yellow);
+        YellowTextView.setY(380);
+        YellowTextView.setX(305);
+        la.addView(YellowTextView);
+
+        TextView GreenTextView = new TextView(this);
+        GreenTextView.setText("Green");
+        GreenTextView.setTextSize(22);
+        GreenTextView.setBackgroundResource(R.color.Green);
+        GreenTextView.setY(410);
+        GreenTextView.setX(245);
+        la.addView(GreenTextView);
+
+        TextView RedTextView = new TextView(this);
+        RedTextView.setText("Red");
+        RedTextView.setTextSize(22);
+        RedTextView.setBackgroundResource(R.color.Red);
+        RedTextView.setY(440);
+        RedTextView.setX(205);
+        la.addView(RedTextView);
+
+        this.setContentView(la, new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
     }
 }
